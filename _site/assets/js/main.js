@@ -28,6 +28,10 @@ header.innerHTML = `
 function quitIntroScreen(){
     intro.classList.replace('intro-enter','intro-leave')
     introContain.style.height = '-0%';
+    var allMusic = document.querySelectorAll('audio');
+    allMusic.forEach(function(music){
+        music.play();
+    })
 }
 
 function addMusicKeys(){
@@ -75,6 +79,8 @@ function addMusicKeys(){
     document.body.appendChild(aboutContain);
     document.body.appendChild(header);
 
+    
+
 
 }
 
@@ -84,7 +90,6 @@ function showAbout(){
     var musicWali = document.querySelector('.music-div');
     var aboutWali = document.querySelector('.about-contain');
     var infoWali = document.querySelector('.head-info');
-    console.log('I was called')
 
     if(musicWali.style.left === '0%'|| aboutWali.style.left === '200%' || infoWali.innerHTML === "Click for more info 👉" ){
         musicWali.style.left = '-200%';
@@ -106,6 +111,7 @@ function showAbout(){
 function deleteIntroScreen(){ 
     introContain.remove();
     intro.remove();
+    
     addMusicKeys();
     window.addEventListener('keydown', addMusic);
     var key = document.querySelectorAll('.key');
@@ -127,8 +133,8 @@ function touchMusic(e){
 }
 
 function addMusic(e){
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    var audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    var key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
     if(!audio) return;
     audio.currentTime = 0;
     audio.play()
