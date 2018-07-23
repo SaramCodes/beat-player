@@ -1,0 +1,67 @@
+---
+---
+
+@mixin prefix-animation($parameters)
+  -webkit-animation : $parameters
+  -moz-animation    : $parameters
+  -ms-animation     : $parameters
+  animation         : $parameters
+
+@mixin prefix-transform($parameters)
+  -webkit-transform : $parameters
+  -moz-transform    : $parameters
+  -ms-transform     : $parameters
+  transform         : $parameters
+
+$baseurl: "{{ site.baseurl }}"
+
+
+
+@font-face
+  font-family: Death Star
+  src: url($baseurl + "../fonts/DeathStar.otf")
+  font-weight: 600
+  
+
+@font-face
+  font-family: Caviar Dreams
+  src: url($baseurl + "../fonts/CaviarDreams_Bold.ttf")
+  font-weight: 1000
+
+@font-face
+  font-family: Caviar Dreams
+  src: url($baseurl + "../fonts/CaviarDreams.ttf")
+  font-weight: 600      
+
+
+
+@import intro
+@import musickey
+@import about
+*
+    padding: 0
+    margin: 0
+    font-family: Caviar Dreams, Arial
+
+
+html
+    overflow-x: hidden
+body
+    min-height: 100vh
+    overflow-x: hidden
+    background-size: contain !important
+    +prefix-animation(bgChange 10s ease-in-out infinite)
+    
+
+
+@keyframes bgChange
+    0%
+        background-color: #36a58f
+    25%
+        background-color: #ff214d
+    50%
+        background-color: #ffaf47
+    75%
+        background-color: #ff4cae
+    100%
+        background-color: #36a58f      

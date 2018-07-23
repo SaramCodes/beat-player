@@ -1,0 +1,117 @@
+@mixin prefix-animation($parameters)
+  -webkit-animation : $parameters
+  -moz-animation    : $parameters
+  -ms-animation     : $parameters
+  animation         : $parameters
+
+@mixin prefix-transform($parameters)
+  -webkit-transform : $parameters
+  -moz-transform    : $parameters
+  -ms-transform     : $parameters
+  transform         : $parameters
+    
+    
+.intro > *
+    font-family: Caviar Dreams, Arial
+    color: #fff
+
+.intro
+    padding-top: 50px
+    padding-bottom: 50px
+    text-align: center
+    +prefix-transform(translate(-50%,-50%))
+    position: absolute
+    top: 50%
+    width: 95%
+    margin: auto
+    left: 50%
+    opacity: 1
+    transition-duration: 1s
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55)
+
+    h2
+        font-weight: 1000
+        width: 80%
+        margin: auto
+
+.intro-enter
+    +prefix-animation(introEnter 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s 1)
+
+.intro-leave
+    opacity: 0
+    top: -0%
+
+.intro .greet
+    font-weight: 1000
+    font-size: 70px
+    margin-bottom: 50px
+
+.intro-contain
+    position: absolute
+    height: 100%
+    width: 100%
+    opacity: 1
+    transition-duration: 1.3s
+    transition-timing-function: ease-out
+
+.intro-btn
+    line-height: 40px
+    font-family: lato
+    font-weight: 1000
+    height: 40px
+    width: 150px
+    border-radius: 5px
+    display: block
+    margin: 50px auto 0 auto
+    cursor: pointer
+    transition-duration: 0.3s
+    overflow-y: hidden
+    position: relative
+    box-shadow: 0px 10px 10px 2px #000
+
+    .white
+        font-size: 18px
+        height: 40px
+        width: 100%
+        top: 0%
+        background: #fff
+        color: #c300ff 
+        position: absolute
+        transition-duration: 0.3s
+    .purple
+        font-size: 18px
+        transition-duration: 0.3s
+        height: 40px
+        width: 100%
+        top: 0
+        background: #c300ff
+        color: #fff   
+        position: absolute
+
+
+    &:hover > .white
+        top: 100%
+
+    &:hover
+        box-shadow: 0px 15px 10px 2px #000
+
+
+            
+@media screen and (max-width:720px)
+    .intro
+        .greet
+            font-size: 50px
+        h2
+            font-size: 15px
+            width: 95%      
+
+@keyframes introEnter
+    0%
+        top: -50%
+        +prefix-transform(translate(-50%,-50%) scale(0.5))
+        opacity: 0
+
+    100%
+        top: 50%
+        +prefix-transform(translate(-50%,-50%) scale(1))
+        opacity: 1
